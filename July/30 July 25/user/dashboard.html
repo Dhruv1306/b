@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        .sidebar {
+            width: 220px;
+            background: #2c3e50;
+            color: #fff;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+        }
+
+        .logout-btn {
+            display: block;
+            width: 80%;
+            margin: 30px auto 0 auto;
+            padding: 12px 0;
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: #c0392b;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px 20px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .sidebar ul li:hover {
+            background: #34495e;
+        }
+
+        .dropdown-content {
+            display: none;
+            background: #34495e;
+            position: static;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+
+        .sidebar ul li.active .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content li {
+            padding: 10px 20px;
+            font-size: 15px;
+        }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 30px;
+        }
+
+        .arrow {
+            float: right;
+            transition: transform 0.2s;
+        }
+
+        .sidebar ul li.active .arrow {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>User Dashboard</h2>
+        <ul>
+            <li id="productMenu">
+                Product
+                <span class="arrow">&#9654;</span>
+                <ul class="dropdown-content">
+                    <li>List</li>
+                    <li>Add</li>
+                </ul>
+            </li>
+            <li>Profile</li>
+            <li>Settings</li>
+            <li>
+                <form action="/logout">
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h1><span id="userName"></span>Welcome to your dashboard!</h1>
+        <p>Select an option from the sidebar.</p>
+    </div>
+    <script>
+        const productMenu = document.getElementById('productMenu');
+        productMenu.addEventListener('click', function (e)
+        {
+            e.stopPropagation();
+            productMenu.classList.toggle('active');
+        });
+        document.body.addEventListener('click', function ()
+        {
+            productMenu.classList.remove('active');
+        });
+
+        // const username = window.URL
+        const queryString = window.location.search.split('?')
+        const userArray = queryString[1].split('=')
+        document.querySelector('#userName').textContent = userArray[1];
+    </script>
+</body>
+</html>

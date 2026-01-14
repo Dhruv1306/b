@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>error-layout</title>
+  </head>
+  <body>
+    <h1>Welcome to error Layout</h1>
+
+    <% if(errorData.errorType === "VALIDATION") { %>
+    <h2><%= errorData.message = "Please check your form inputs" %></h2>
+    <p>Status Code: <%= errorData.statusCode = 400 %></p>
+    <p>Request URL: <%= errorData.requestUrl %></p>
+    <p>Timestamp: <%= errorData.timestamp %></p>
+    <p>Fix the highlighted form inputs and resubmit</p>
+    <% } else if(errorData.errorType === "NOT_FOUND") { %>
+    <h2><%= errorData.message = "Page not found" %></h2>
+    <p>Status Code: <%= errorData.statusCode = 404 %></p>
+    <p>Request URL: <%= errorData.requestUrl %></p>
+    <p>Timestamp: <%= errorData.timestamp %></p>
+    <p>Go back to Home Page</p>
+    <% } else if(errorData.errorType === "SERVER_ERROR") { %>
+    <h2><%= errorData.message = "Internal server error" %></h2>
+    <p>Status Code: <%= errorData.statusCode = 500 %></p>
+    <p>Request URL: <%= errorData.requestUrl %></p>
+    <p>Timestamp: <%= errorData.timestamp %></p>
+    <p>Try again later</p>
+    <% } %>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello, <%= name %>!!</h1>
+
+    <h1>use of Variables</h1>
+    <% let y = 1 %>
+    <%= "value of y before: " + y %> <br>
+    <%= y = 4 %> <br>  <!-- This will change the value of y to 4 and print it. -->
+    <%= "value of y after: " + y %> <br>
+    <%= "value of y after changing, using '=' is : " + (y=2) %> <br>  <!-- This will change the value of y to 2 and print it. -->
+
+    <h1>Including a partials file</h1>
+    <%- include('./partials/header.ejs') %>  <!-- '-' is used to render HTML tags. -->
+</body>
+</html>

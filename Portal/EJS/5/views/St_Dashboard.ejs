@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background: #18191a;
+        color: #fff;
+        font-family: "Segoe UI", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
+      .dashboard-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 40px 24px 0 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 90vh;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+      }
+      h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+        letter-spacing: 0.5px;
+        text-align: center;
+      }
+      table {
+        border-collapse: collapse;
+        margin: 30px auto 40px auto;
+        background: #23272f;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        overflow: hidden;
+        min-width: 400px;
+        width: 100%;
+        max-width: 500px;
+      }
+      th, td {
+        padding: 14px 28px;
+        border: 1px solid #333;
+        text-align: center;
+        font-size: 1.1rem;
+      }
+      th {
+        background: #2d313a;
+        color: #ffb700;
+        font-size: 1.15rem;
+        letter-spacing: 0.5px;
+      }
+      td {
+        background: #23272f;
+        color: #fff;
+        transition: background 0.2s;
+      }
+      tr:hover td {
+        background: #282c34;
+      }
+      .admin-badge {
+        color: #ffb700;
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-left: 8px;
+      }
+      .grade-A {
+        color: #00e676 !important;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+      .grade-B, .grade-C {
+        color: #2196f3 !important;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+      .grade-D, .grade-F, .grade-E {
+        color: #ff1744 !important;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+      .notice-title {
+        margin-top: 30px;
+        font-size: 1.1rem;
+        color: #ffb700;
+        text-align: center;
+      }
+      .footer {
+        margin-top: 40px;
+        text-align: center;
+        color: #aaa;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+      }
+      .info-block {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 18px;
+      }
+    </style>
+
+    <div class="dashboard-container">
+      <% if(data.student.role === 'admin'){ %>
+        <h1>Admin Dashboard</h1>
+        <div class="info-block">★ Admin Access</div>
+        <div class="info-block">Welcome, <%= data.student.name %></div>
+        <div class="info-block">Email: <%= data.student.email %></div>
+        <h3>Courses</h3>
+        <table>
+          <tr>
+            <th>Course Title</th>
+            <th>Grade</th>
+          </tr>
+          <% data.courses.forEach(course => { %>
+          <tr>
+            <td><%= course.title %></td>
+            <td
+              class="<%= course.grade === 'A' ? 'grade-A' : (course.grade === 'B' ? 'grade-B' : (course.grade === 'C' ? 'grade-C' : 'grade-D')) %>"
+            >
+              <%= course.grade %>
+            </td>
+          </tr>
+          <% }) %>
+        </table>
+      <% } else { %>
+        <h1>Student Dashboard</h1>
+        <div class="info-block">Welcome, <%= data.student.name %></div>
+        <div class="info-block">Email: <%= data.student.email %></div>
+        <h3>Courses</h3>
+        <table>
+          <tr>
+            <th>Course Title</th>
+            <th>Grade</th>
+          </tr>
+          <% data.courses.forEach(course => { %>
+          <tr>
+            <td><%= course.title %></td>
+            <td
+              class="<%= course.grade === 'A' ? 'grade-A' : (course.grade === 'B' ? 'grade-B' : (course.grade === 'C' ? 'grade-C' : 'grade-D')) %>"
+            >
+              <%= course.grade %>
+            </td>
+          </tr>
+          <% }) %>
+        </table>
+      <% } %> 
+      <h4 class="notice-title">Escaping Variable</h4>
+      <div class="info-block"><%= data.notice %></div>
+      <h4 class="notice-title">Non-Escaping Variable</h4>  
+      <div class="info-block"><%- data.notice %></div>
+      <div class="footer">
+        <%- include('./partials/footer.ejs') %>
+      </div>
+    </div>
+  </body>
+</html>

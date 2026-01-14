@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello, EJS!</h1>
+    <p>This is a simple EJS template.</p>
+
+    <h1>Use of Variables</h1>
+    <% let y=4 %>
+    <%=y %>                
+    <!-- NOTE : This '='  should be with the '%' sign WITHOUT ANY SPACE.  
+            '=' is used If we want to USE or CHANGE the value of a variable. -->
+    <h1>Use of Imported Data</h1>
+    <%#=name %>                         <!-- NOTE : TO MAKE COMMENT WE NEED TO USE '#' AFTER '%' SIGN -->
+    <%= data.name %>
+    <%= data.age %>
+
+    <h1>If condition implementation</h1>
+    <% if(data.name == "Dhruv"){  %>
+        This is my name
+    <% } else { %>
+        This is not my name        
+    <% } %>
+    <!-- We can also write this line inside a <p> tag. -->
+
+    <h1>For Loop implementation</h1>
+    <% for(let i=0; i<5; i++){ %>
+        <p>The value of i is <%=i %></p>
+    <% } %>
+
+    <h1>Array implementation</h1>
+    <% let arr = ['apple', 'banana', 'grapes', 'mango']; %>
+    <% for(let i=0; i<arr.length; i++){ %>
+        <p>The value of arr[<%=i %>] is <%=arr[i] %></p>
+    <% } %>
+
+    <h1>For Each implementation</h1>
+    <% arr.forEach(function(element, index){ %>
+        <p>The value of arr[<%=index %>] is <%=element %></p>
+    <% }) %>
+
+    <!-- OR -->
+
+    <% Object.values(data).forEach(value => { %>
+        <%=value %>
+    <% }) %>
+
+    <h1>Function implementation</h1>
+    <% function add(a,b){ %>
+        <%=a+b %>
+    <% } %>         <!-- This will not work as we are not returning anything from the function. -->
+    <!-- So, we will call the function like this : -->
+    <%=add(2,3) %>         <!-- OR-->
+    <p>The sum of 4 and 5 is <% add(4,5) %></p>
+
+
+    <h1>Including a partial file</h1>
+    <%- include("./partials/header.ejs") %>  <!-- '-' is used to render HTML tags. -->
+
+</body>
+</html>

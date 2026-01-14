@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Report</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        margin: 40px auto;
+        font-size: 1.2rem;
+      }
+      th,
+      td {
+        border: 2px solid #222;
+        padding: 12px 24px;
+        text-align: center;
+      }
+      .red {
+        color: red;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 2.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Student Report</h1>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Math</th>
+        <th>Science</th>
+        <th>English</th>
+      </tr>
+      <% students.forEach(student => { %>
+      <tr>
+        <td><%= student.name %></td>
+        <td class="<%= student.marks.math < 70 ? 'red' : '' %>">
+          <%= student.marks.math %>
+        </td>
+        <td class="<%= student.marks.science < 70 ? 'red' : '' %>">
+          <%= student.marks.science %>
+        </td>
+        <td class="<%= student.marks.english < 70 ? 'red' : '' %>">
+          <%= student.marks.english %>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>
+
+
+<!-- In <td> tag, we use this EJS code inside the "class" attribute so that we can conditionally apply a CSS class to the table cell based on the student's marks.
+
+- If `student.marks.math < 70` is true, the class "red" is added, making the text red (using your CSS).
+- If the marks are 70 or above, the class is empty, so the cell uses the default color.
+
+By putting the EJS code inside the `class` attribute, you control the cell's appearance dynamically, based on the data. This is a common way to highlight or style table cells conditionally in EJS templates. -->

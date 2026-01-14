@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Greeting Page</title>
+</head>
+<body>
+    <% if (isLoggedIn) { %>
+        <h1>Welcome back, <%= userName %>!</h1>
+    <% } else { %>
+        <h2>Please log in to continue!!</h2>
+    <% } %>
+</body>
+</html>

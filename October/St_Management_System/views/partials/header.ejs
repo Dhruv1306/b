@@ -1,0 +1,198 @@
+<header class="main-header">
+  <nav class="header-nav">
+    <div class="nav-container">
+      <!-- Logo and Brand -->
+      <div class="nav-brand">
+        <a href="/" class="brand-link">
+          <div class="brand-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="brand-text">
+            <h1>Student Management</h1>
+            <span class="brand-tagline">Excellence in Education</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Navigation Menu -->
+      <div class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+          <li class="nav-item">
+            <a href="/" class="nav-link" data-section="home">
+              <i class="fas fa-home"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/#add-student" class="nav-link" data-section="add">
+              <i class="fas fa-user-plus"></i>
+              <span>Add Student</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/#filter" class="nav-link" data-section="filter">
+              <i class="fas fa-filter"></i>
+              <span>Filter</span>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="toolsDropdown">
+              <i class="fas fa-tools"></i>
+              <span>Tools</span>
+              <i class="fas fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <ul class="dropdown-menu" id="toolsMenu">
+              <li>
+                <a
+                  href="/fix-numbering"
+                  class="dropdown-link"
+                  onclick="return confirm('This will renumber all students sequentially. Continue?')"
+                >
+                  <i class="fas fa-sort-numeric-up"></i>
+                  Fix Numbering
+                </a>
+              </li>
+              <li>
+                <a href="#" class="dropdown-link" onclick="exportData()">
+                  <i class="fas fa-download"></i>
+                  Export Data
+                </a>
+              </li>
+              <li>
+                <a href="#" class="dropdown-link" onclick="showStats()">
+                  <i class="fas fa-chart-bar"></i>
+                  Statistics
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- Search Bar -->
+        <div class="nav-search">
+          <div class="search-container">
+            <input
+              type="text"
+              id="globalSearch"
+              placeholder="Search students..."
+              class="search-input"
+            />
+            <button
+              type="button"
+              class="search-btn"
+              onclick="performGlobalSearch()"
+            >
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- User Actions -->
+        <div class="nav-actions">
+          <button
+            class="action-btn theme-toggle"
+            id="themeToggle"
+            title="Toggle Dark Mode"
+          >
+            <i class="fas fa-moon"></i>
+          </button>
+          <button
+            class="action-btn notification-btn"
+            id="notificationBtn"
+            title="Notifications"
+          >
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge" id="notificationBadge">3</span>
+          </button>
+          <div class="user-profile dropdown">
+            <button class="profile-btn" id="profileBtn">
+              <div class="profile-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="profile-info">
+                <span class="profile-name">Admin</span>
+                <span class="profile-role">Administrator</span>
+              </div>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <ul class="dropdown-menu profile-menu" id="profileMenu">
+              <li>
+                <a href="#" class="dropdown-link">
+                  <i class="fas fa-user-cog"></i>
+                  Profile Settings
+                </a>
+              </li>
+              <li>
+                <a href="#" class="dropdown-link">
+                  <i class="fas fa-cog"></i>
+                  System Settings
+                </a>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li>
+                <a
+                  href="#"
+                  class="dropdown-link text-danger"
+                  onclick="logout()"
+                >
+                  <i class="fas fa-sign-out-alt"></i>
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header Info -->
+  <div class="page-header" id="pageHeader">
+    <div class="header-container">
+      <div class="header-content">
+        <div class="header-text">
+          <h2 class="page-title" id="pageTitle">Student Dashboard</h2>
+          <p class="page-description" id="pageDescription">
+            Manage and organize your student records efficiently
+          </p>
+        </div>
+        <div class="header-stats">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-info">
+              <div class="stat-number" id="headerTotalStudents">0</div>
+              <div class="stat-label">Total Students</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="stat-info">
+              <div class="stat-number" id="headerAvgMarks">0%</div>
+              <div class="stat-label">Average Marks</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <div class="stat-info">
+              <div class="stat-number" id="headerTopPerformers">0</div>
+              <div class="stat-label">Top Performers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

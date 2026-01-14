@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .navbar .username {
+            background: #34495e;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .dashboard-content {
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Dashboard</div>
+        <div class="username">Welcome, <span id="userName">User Name</span></div>
+    </nav>
+    <div class="dashboard-content">
+        <h1>Admin Dashboard</h1>
+        <!-- Add more dashboard content here -->
+    </div>
+    <script>
+        // Example: Set user name dynamically
+        const userName = "John Doe"; // Replace with actual user name from backend
+        document.getElementById('userName').textContent = userName;
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+- Mongoose is much versatile than MongoClient.
+- It provides more customization.
+- It's JS library to intract node.js to mongodb
+- schema  ->  mentioning the field's data types, Validations, custom functions, etc.
+- Model -> An Object to apply CRUD opperations on it.
+-

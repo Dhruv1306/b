@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <h1>Welcome back, <%#= data[0].userName %>!</h1>         // Here, we have used 2 types of comments 1st for the HTML    and    2nd "#" for the EJS code -->
+
+    <%- (data.isLoggedIn) ? `<h1>Welcome back, ${data.userName}!</h1>` : '<h2>Please log in to continue</h2>' %>
+
+
+    <!-- <%# if (data.isLoggedIn) { %>
+    <h1>Welcome back, <%#= data.userName %>!</h1>
+<%# } else { %>
+    <h2>Please log in to continue</h2>
+<%# } %> -->
+  </body>
+</html>
+
+
+
+<!-- Notes: 
+- The code demonstrates the use of EJS (Embedded JavaScript) for rendering dynamic content on a web page.
+- It includes both inline EJS syntax and commented-out EJS code blocks.
+- The inline EJS code uses the `<%- %>` tags to output unescaped HTML, allowing for the inclusion of HTML tags within the EJS expressions.
+- The commented-out EJS code blocks use the `<%# %>` tags, which are not executed and serve as documentation or notes for developers.
+- The code checks the user's login status and displays a personalized greeting or a login prompt accordingly. 
+
+- <%- %> is used to output unescaped content, meaning that any HTML tags within the content will be rendered as actual HTML elements in the browser and not as plain text.
+- <%# %> is used for comments in EJS. Any code or text within these tags will not be executed or rendered in the final output. It is useful for adding notes or explanations within the EJS template without affecting the rendered HTML.
+- <%= %> is used to "output" "escaped content", meaning that any HTML tags within the content will be rendered as plain text in the browser. This is useful for displaying user-generated content without risking XSS (Cross-Site Scripting) attacks.
+-->
