@@ -6,3 +6,4 @@ app.set("view engine", "ejs");
 app.get('/', (req,res) => {
     res.render('main.ejs');       // sending a "data" object isn't a necessary thing.
 });
+// include h & f
